@@ -739,7 +739,7 @@ class Geometries:
         location = location.split(os.sep)
         location.pop()
         location = os.sep.join(location)
-        location += os.sep+os.path.join("search_results,"noc_"+str(self.parent.noc)","dim_"+str(self.parent.dim),"fs_")
+        location += os.sep+os.path.join("search_results","noc_"+str(self.parent.noc),"dim_"+str(self.parent.dim),"fs_")
         for i in range(len(self.parent.fixed.sides)):
             for fs in self.parent.fixed.sides[i]:
                 location+=str(fs[0])+str(fs[1])
