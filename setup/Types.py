@@ -1179,22 +1179,21 @@ class Types:
         self.gals = []
         self.sugs = []
         # Folder
-        s = "\\"
         location = os.path.abspath(os.getcwd())
-        location = location.split(s)
+        location = location.split(os.sep)
         location.pop()
         location = s.join(location)
-        location += "\\search_results\\noc_"+str(self.noc)+"\\dim_"+str(self.dim)+"\\fs_"
+        location += os.path.join(os.sep,"search_results","noc_"+str(self.noc),"dim_"+str(self.dim),"fs_")
         for i in range(len(self.fixed.sides)):
             for fs in self.fixed.sides[i]:
                 location+=str(fs.ax)+str(fs.dir)
             if i!=len(self.fixed.sides)-1: location+=("_")
-        location+="\\allvalid"
+        location+= os.sep+"allvalid"
         maxi = len(os.listdir(location))-1
         for i in range(20):
             if (i+start_index)>maxi: break
             try:
-                hfs = np.load(location+"\\height_fields_"+str(start_index+i)+".npy")
+                hfs = np.load(os.path.join(location,"height_fields_"+str(start_index+i)+".npy"))
                 self.gals.append(Geometries(self,mainmesh=False,hfs=hfs))
             except:
                 abc = 0
